@@ -161,31 +161,25 @@ export default function Projects() {
                       ))}
                     </div>
 
-                    {hasLinks && (
-                      <div className="flex items-center gap-4 pt-4 border-t border-slate-100">
-                        {project.github && project.github !== '#' && (
-                          <a href={project.github} target="_blank" rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-900 transition-colors font-semibold group/link">
-                            <Github className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5" />
-                            Code
-                          </a>
-                        )}
-                        {project.docs && (
-                          <a href={project.docs} target="_blank" rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-violet-600 transition-colors font-semibold group/link">
-                            <FileText className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5" />
-                            Docs
-                          </a>
-                        )}
-                        {project.live && (
-                          <a href={project.live} target="_blank" rel="noopener noreferrer"
-                            className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-blue-600 transition-colors font-semibold ml-auto group/link">
-                            <ExternalLink className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5" />
-                            Live
-                          </a>
-                        )}
-                      </div>
-                    )}
+                    <div className="flex items-center gap-4 pt-4 border-t border-slate-100">
+                      <a href={project.github ?? '#'} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-900 transition-colors font-semibold group/link">
+                        <Github className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5" />
+                        Code
+                      </a>
+                      {project.docs && (
+                        <a href={project.docs} target="_blank" rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-violet-600 transition-colors font-semibold group/link">
+                          <FileText className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5" />
+                          Docs
+                        </a>
+                      )}
+                      <a href={project.live ?? '#'} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-blue-600 transition-colors font-semibold ml-auto group/link">
+                        <ExternalLink className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5" />
+                        Live
+                      </a>
+                    </div>
                   </div>
                 </article>
               </FadeIn>
