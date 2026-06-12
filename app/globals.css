@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; padding: 0; margin: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #fff;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* ── Typography ── */
+  .gradient-text {
+    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-warm {
+    background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Buttons ── */
+  .gradient-btn {
+    background: #2563eb;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .gradient-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .gradient-btn:hover {
+    background: #1d4ed8;
+    box-shadow: 0 6px 20px rgba(37,99,235,0.35);
+    transform: translateY(-1px);
+  }
+  .gradient-btn:hover::after { opacity: 1; }
+  .gradient-btn:active { transform: translateY(0); }
+
+  .outline-btn {
+    border: 1.5px solid #2563eb;
+    color: #2563eb;
+    background: transparent;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .outline-btn:hover {
+    background: #eff6ff;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.14);
+    transform: translateY(-1px);
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  }
+  .card:hover {
+    box-shadow: 0 8px 28px rgba(0,0,0,0.09);
+    border-color: #bfdbfe;
+    transform: translateY(-3px);
+  }
+
+  .card-featured {
+    background: #fff;
+    border: 1.5px solid transparent;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    background-clip: padding-box;
+    position: relative;
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  .card-featured::before {
+    content: '';
+    position: absolute;
+    inset: -1.5px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #2563eb33, #0ea5e933, #2563eb33);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .card-featured:hover { box-shadow: 0 12px 32px rgba(37,99,235,0.12); transform: translateY(-3px); }
+  .card-featured:hover::before { opacity: 1; }
+
+  /* ── Tabs ── */
+  .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .tab-btn {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding-bottom: 12px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+    color: #64748b;
+  }
+  .tab-btn:hover { color: #1e293b; border-bottom-color: #cbd5e1; }
+  .tab-btn.active { color: #2563eb; border-bottom-color: #2563eb; }
+
+  /* ── Skill badges ── */
+  .skill-badge {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1d4ed8;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    cursor: default;
+  }
+  .skill-badge:hover {
+    background: #dbeafe;
+    border-color: #60a5fa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37,99,235,0.14);
+  }
+
+  /* ── Timeline ── */
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #2563eb;
+    box-shadow: 0 0 0 4px #dbeafe;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  /* ── Form inputs ── */
+  .input-field {
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    outline: none;
+    color: #0f172a;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  .input-field::placeholder { color: #94a3b8; }
+  .input-field:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    background: #fff;
+  }
+
+  /* ── Shimmer ── */
+  .shimmer-bg {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* ── Word animation ── */
+  .word-animate {
+    opacity: 0;
+    display: inline-block;
+    animation: wordIn 0.55s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .tabular-nums { font-variant-numeric: tabular-nums; }
+}
+
+/* Standalone keyframes — must live outside @layer to be referenced by custom CSS classes */
+@keyframes wordIn {
+  0%   { opacity: 0; transform: translateY(18px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
