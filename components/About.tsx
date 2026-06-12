@@ -51,26 +51,7 @@ export default function About() {
 
           {/* Right */}
           <div className="space-y-4">
-            {highlights.map((item, i) => {
-              const Icon = item.icon
-              return (
-                <FadeIn key={item.title} delay={i * 120} direction="right">
-                  <div className="card-featured rounded-2xl p-5 cursor-default">
-                    <div className="flex items-start gap-4">
-                      <div className={`p-2.5 rounded-xl ${item.color} flex-shrink-0`}>
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h3 className="font-bold text-slate-900 mb-1">{item.title}</h3>
-                        <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
-                      </div>
-                    </div>
-                  </div>
-                </FadeIn>
-              )
-            })}
-
-            <FadeIn delay={360}>
+            <FadeIn delay={0} direction="right">
               <div className="card rounded-2xl p-5 bg-gradient-to-br from-blue-600 to-blue-500 border-0 text-white">
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur flex items-center justify-center flex-shrink-0">
@@ -87,6 +68,25 @@ export default function About() {
                 </div>
               </div>
             </FadeIn>
+
+            {highlights.map((item, i) => {
+              const Icon = item.icon
+              return (
+                <FadeIn key={item.title} delay={(i + 1) * 120} direction="right">
+                  <div className="card-featured rounded-2xl p-5 cursor-default">
+                    <div className="flex items-start gap-4">
+                      <div className={`p-2.5 rounded-xl ${item.color} flex-shrink-0`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-slate-900 mb-1">{item.title}</h3>
+                        <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                </FadeIn>
+              )
+            })}
           </div>
 
         </div>
