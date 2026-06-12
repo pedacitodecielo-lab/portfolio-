@@ -138,7 +138,7 @@ export default function Hero() {
                 {barData.map((h, i) => (
                   <div key={i} className="flex-1 flex flex-col justify-end rounded-t overflow-hidden">
                     <div
-                      className={`rounded-t transition-all ${i === barData.length - 1 ? 'bg-blue-600' : 'bg-blue-100 hover:bg-blue-200'}`}
+                      className={`rounded-t transition-all ${i === barData.length - 1 ? 'bg-blue-600' : 'bg-blue-200 hover:bg-blue-300'}`}
                       style={{
                         height: barsVisible ? `${h}%` : '4px',
                         transitionDuration: '700ms',
