@@ -7,7 +7,7 @@ import FadeIn from './FadeIn'
 const socials = [
   { icon: Linkedin, label: 'LinkedIn', sub: 'linkedin.com/in/emelio-exaudi', href: 'https://www.linkedin.com/in/emelio-exaudi-157620289/', color: 'hover:text-blue-600 hover:border-blue-200' },
   { icon: Github, label: 'GitHub', sub: 'github.com/pedacitodecielo-lab', href: 'http://github.com/pedacitodecielo-lab', color: 'hover:text-slate-900 hover:border-slate-300' },
-  { icon: Mail, label: 'Email', sub: 'emeliexaudi@gmail.com', href: 'mailto:emeliexaudi@gmail.com', color: 'hover:text-red-500 hover:border-red-200' },
+  { icon: Mail, label: 'Email', sub: 'emelioexaudi@gmail.com', href: 'mailto:emelioexaudi@gmail.com', color: 'hover:text-red-500 hover:border-red-200' },
 ]
 
 export default function Contact() {

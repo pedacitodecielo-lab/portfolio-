@@ -33,7 +33,7 @@ export default function About() {
 
             <div className="flex flex-wrap gap-4 text-sm text-slate-500 mb-7 font-medium">
               <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-blue-500" />Bogor, Jawa Barat</span>
-              <span className="flex items-center gap-2"><Mail className="w-4 h-4 text-blue-500" />emeliexaudi@gmail.com</span>
+              <span className="flex items-center gap-2"><Mail className="w-4 h-4 text-blue-500" />emelioexaudi@gmail.com</span>
             </div>
 
             <div className="flex gap-3">
