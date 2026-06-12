@@ -134,13 +134,13 @@ export default function Hero() {
               </div>
 
               {/* Animated bar chart */}
-              <div className="flex items-end gap-1 h-28 mb-2">
+              <div className="flex gap-1 h-28 mb-2">
                 {barData.map((h, i) => (
-                  <div key={i} className="flex-1 flex flex-col justify-end rounded-t overflow-hidden">
+                  <div key={i} className="flex-1 flex flex-col justify-end h-full">
                     <div
                       className={`rounded-t transition-all ${i === barData.length - 1 ? 'bg-blue-600' : 'bg-blue-200 hover:bg-blue-300'}`}
                       style={{
-                        height: barsVisible ? `${h}%` : '4px',
+                        height: barsVisible ? `${h}%` : '2px',
                         transitionDuration: '700ms',
                         transitionDelay: `${i * 45}ms`,
                         transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
