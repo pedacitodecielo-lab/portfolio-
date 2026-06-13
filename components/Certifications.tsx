@@ -139,7 +139,7 @@ export default function Certifications() {
                   <p className="text-xs text-slate-400 font-semibold mb-4">{cert.issuer} · {cert.date}</p>
 
                   {/* Links */}
-                  {cert.links.length > 0 ? (
+                  {cert.links.length > 0 && (
                     <div className="flex flex-wrap gap-2 mt-auto">
                       {cert.links.map((link) => (
                         <a
@@ -155,7 +155,8 @@ export default function Certifications() {
                         </a>
                       ))}
                     </div>
-                  ) : (
+                  )}
+                  {cert.links.length === 0 && !cert.image && (
                     <p className="text-[11px] text-slate-300 font-semibold mt-auto">Credential link coming soon</p>
                   )}
                 </div>
