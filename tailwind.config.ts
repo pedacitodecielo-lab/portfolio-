@@ -20,6 +20,8 @@ const config: Config = {
         'fade-scale': 'fadeScale 0.35s ease-out',
         'ping-slow': 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite',
         shimmer: 'shimmer 2s linear infinite',
+        'marquee-left': 'marqueeLeft 28s linear infinite',
+        'marquee-right': 'marqueeRight 22s linear infinite',
       },
       keyframes: {
         float: {
@@ -49,6 +51,14 @@ const config: Config = {
         shimmer: {
           '0%': { backgroundPosition: '-200% 0' },
           '100%': { backgroundPosition: '200% 0' },
+        },
+        marqueeLeft: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        marqueeRight: {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
         },
       },
     },

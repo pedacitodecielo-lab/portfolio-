@@ -184,6 +184,41 @@
   .tabular-nums { font-variant-numeric: tabular-nums; }
 }
 
+/* ── Marquee / infinite scroll ── */
+.marquee-gradient-mask {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.marquee-pause:hover {
+  animation-play-state: paused;
+}
+
+.skill-badge-alt {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+.skill-badge-alt:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+}
+
+@keyframes marqueeLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
 /* Standalone keyframes — must live outside @layer to be referenced by custom CSS classes */
 @keyframes wordIn {
   0%   { opacity: 0; transform: translateY(18px); }

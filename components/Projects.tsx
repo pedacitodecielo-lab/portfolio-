@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { ExternalLink, Github, Database, BarChart2, Zap, Search, Activity, GitBranch, FileText, X, ChevronLeft, ChevronRight, ImageOff } from 'lucide-react'
+import { ExternalLink, Github, Database, BarChart2, Zap, Search, Activity, GitBranch, FileText, X, ChevronLeft, ChevronRight, ImageOff, Layers, Droplets } from 'lucide-react'
 import FadeIn from './FadeIn'
 
-const tabs = ['All', 'Data Engineering', 'Data Analysis', 'Business Intelligence', 'Automation']
+const tabs = ['All', 'Data Analysis', 'Research', 'Data Engineering', 'Business Intelligence', 'Automation']
 
 type Project = {
   icon: React.ElementType
@@ -27,6 +27,55 @@ type Project = {
 }
 
 const projects: Project[] = [
+  {
+    icon: Layers, iconColor: 'text-green-600', iconBg: 'bg-green-50', headerBg: 'from-green-50 to-emerald-50',
+    category: 'Data Analysis', badge: 'Geospatial', badgeColor: 'text-green-700 bg-green-100',
+    title: 'Hydrometeorological Analysis — PT ANTAM Tbk',
+    description: 'Satellite rainfall bias correction (GPM & CHIRPS vs. ground gauges), GIS slope mapping, and extensometer displacement analysis for HSSE monitoring at an active gold mine.',
+    fullDesc: 'Performed end-to-end hydrometeorological and geospatial analysis for the HSSE division of PT ANTAM Tbk\'s Gold Mining Business Unit in Pongkor, Jawa Barat. Compared satellite rainfall products (GPM and CHIRPS) against ground rain gauges using bias correction techniques — Linear Scaling and Quantile Mapping. Created slope hazard maps from satellite DEM data using QGIS, processed extensometer displacement data to study lag time correlation with rainfall events, and produced time series visualizations and data availability matrices for official environmental monitoring reports. Also conducted field surveys at the active mining site.',
+    highlights: [
+      'Applied Linear Scaling and Quantile Mapping bias correction to GPM & CHIRPS satellite rainfall data',
+      'Created GIS slope hazard maps using QGIS with satellite DEM data',
+      'Analyzed extensometer displacement data to identify rainfall-to-slope-movement lag time',
+      'Produced data availability matrices and time series visualizations for HSSE reports',
+      'Conducted field surveys at active gold mining site for instrument inspection',
+    ],
+    tech: ['Python', 'QGIS', 'Pandas', 'Matplotlib', 'GIS', 'Satellite Data'],
+    github: null, docs: null, live: null,
+    previewImg: '/experience/antam/rainfall-timeseries.jpg',
+    images: [
+      '/experience/antam/slope-map.jpg',
+      '/experience/antam/rainfall-timeseries.jpg',
+      '/experience/antam/data-matrix.jpg',
+      '/experience/antam/lag-time.jpg',
+      '/experience/antam/field.jpg',
+      '/experience/antam/certificate.jpg',
+    ],
+  },
+  {
+    icon: Droplets, iconColor: 'text-cyan-600', iconBg: 'bg-cyan-50', headerBg: 'from-cyan-50 to-sky-50',
+    category: 'Research', badge: 'Innovation', badgeColor: 'text-cyan-700 bg-cyan-100',
+    title: 'Jaring Embun — Fog Harvesting for Clean Water',
+    description: 'An innovative fog/dew harvesting net designed at FITB ITB as a solution to Indonesia\'s clean water crisis. Featured in Tempo.co and ITB official news.',
+    fullDesc: 'Developed and tested a fog net (jaring embun) system as an innovative approach to clean water scarcity in Indonesia. The system captures atmospheric moisture through a specially designed mesh, channels collected water into a storage unit, and integrates IoT sensors for automated moisture data logging. The project was conducted at FITB (Faculty of Earth Sciences and Technology) at Institut Teknologi Bandung, combining principles of hydrology, materials science, and environmental engineering. The work gained national media coverage from Tempo.co and was featured on the ITB official website.',
+    highlights: [
+      'Designed and built a functional fog/dew harvesting net prototype at FITB ITB',
+      'Integrates IoT sensors for automated moisture and collection data logging',
+      'Addresses clean water access challenges in water-scarce regions of Indonesia',
+      'Featured in Tempo.co national news coverage',
+      'Published on ITB official website as an innovative student innovation',
+    ],
+    tech: ['IoT', 'Hydrology', 'Environmental Eng', 'Sensors', 'Field Research'],
+    github: null,
+    docs: 'https://itb.ac.id/berita/mahasiswa-itb-ciptakan-jaring-embun-solusi-inovatif-atasi-krisis-air/61776',
+    live: 'https://en.tempo.co/read/1949487/itb-develops-and-tests-dew-harvesting-tool-to-address-clean-water-crisis',
+    previewImg: '/projects/jaring-embun/photo1.jpg',
+    images: [
+      '/projects/jaring-embun/photo1.jpg',
+      '/projects/jaring-embun/photo2.jpg',
+      '/projects/jaring-embun/photo3.jpg',
+    ],
+  },
   {
     icon: Database, iconColor: 'text-blue-600', iconBg: 'bg-blue-50', headerBg: 'from-blue-50 to-sky-50',
     category: 'Data Engineering', badge: 'Pipeline', badgeColor: 'text-blue-700 bg-blue-100',
@@ -291,23 +340,27 @@ export default function Projects() {
                     </div>
 
                     <div className="flex items-center gap-4 pt-4 border-t border-slate-100" onClick={(e) => e.stopPropagation()}>
-                      <a href={project.github ?? '#'} target="_blank" rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-900 transition-colors font-semibold group/link">
-                        <Github className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5" />
-                        Code
-                      </a>
+                      {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-900 transition-colors font-semibold group/link">
+                          <Github className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5" />
+                          Code
+                        </a>
+                      )}
                       {project.docs && (
                         <a href={project.docs} target="_blank" rel="noopener noreferrer"
                           className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-violet-600 transition-colors font-semibold group/link">
                           <FileText className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5" />
-                          Docs
+                          Article
                         </a>
                       )}
-                      <a href={project.live ?? '#'} target="_blank" rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-blue-600 transition-colors font-semibold ml-auto group/link">
-                        <ExternalLink className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5" />
-                        Live
-                      </a>
+                      {project.live && (
+                        <a href={project.live} target="_blank" rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-blue-600 transition-colors font-semibold ml-auto group/link">
+                          <ExternalLink className="w-4 h-4 transition-transform group-hover/link:-translate-y-0.5" />
+                          Live
+                        </a>
+                      )}
                     </div>
                   </div>
                 </article>
