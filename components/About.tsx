@@ -22,13 +22,10 @@ export default function About() {
               and its power to transform decisions
             </h2>
             <p className="text-slate-500 leading-relaxed mb-5 text-[15px]">
-              I&apos;m a Data Analyst &amp; Data Engineer based in [Your City]. With [X] years of experience,
-              I specialize in building end-to-end data solutions — from ingesting raw data to delivering
-              polished dashboards that business teams love.
+              I&apos;m a final-year Meteorology student at Institut Teknologi Bandung, based in Bogor. My academic background in atmospheric science has pushed me deep into data — working with large geospatial datasets, time series, and satellite products on a daily basis.
             </p>
             <p className="text-slate-500 leading-relaxed mb-8 text-[15px]">
-              Comfortable across the full data stack: SQL queries, Python pipelines, star schema design,
-              Power BI reports, and cloud data platforms.
+              I build end-to-end data solutions: Python pipelines, SQL queries, geospatial analysis with QGIS, and dashboards that turn raw numbers into clear insight. I am actively looking for opportunities to grow as a Data Analyst or Data Engineer after graduation.
             </p>
 
             <div className="flex flex-wrap gap-4 text-sm text-slate-500 mb-7 font-medium">
