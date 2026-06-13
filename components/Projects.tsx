@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { ExternalLink, Github, Database, BarChart2, Zap, Search, Activity, GitBranch, FileText, X, ChevronLeft, ChevronRight, ImageOff, Layers, Droplets } from 'lucide-react'
+import { ExternalLink, Github, FileText, X, ChevronLeft, ChevronRight, ImageOff, Layers, Droplets } from 'lucide-react'
 import FadeIn from './FadeIn'
 
-const tabs = ['All', 'Data Analysis', 'Research', 'Data Engineering', 'Business Intelligence', 'Automation']
+const tabs = ['All', 'Data Analysis', 'Research']
 
 type Project = {
   icon: React.ElementType
@@ -75,66 +75,6 @@ const projects: Project[] = [
       '/projects/jaring-embun/photo2.jpg',
       '/projects/jaring-embun/photo3.jpg',
     ],
-  },
-  {
-    icon: Database, iconColor: 'text-blue-600', iconBg: 'bg-blue-50', headerBg: 'from-blue-50 to-sky-50',
-    category: 'Data Engineering', badge: 'Pipeline', badgeColor: 'text-blue-700 bg-blue-100',
-    title: 'Real-time Sales Data Pipeline',
-    description: 'End-to-end ELT pipeline ingesting 10M+ daily events from Kafka into BigQuery, with dbt transformations and automated data quality checks.',
-    fullDesc: 'Built a fully automated ELT pipeline that ingests over 10 million sales events daily from multiple Kafka topics into Google BigQuery. The pipeline includes real-time schema validation, error handling with dead-letter queues, and dbt transformation models that produce clean, business-ready tables. Apache Airflow orchestrates the entire workflow with alerting on failure.',
-    highlights: ['10M+ events processed daily', 'Sub-5 minute latency end-to-end', '99.9% pipeline uptime', 'Automated data quality checks on every run'],
-    tech: ['Python', 'Kafka', 'BigQuery', 'dbt', 'Airflow'],
-    github: '#', docs: null, live: null, previewImg: null, images: [],
-  },
-  {
-    icon: BarChart2, iconColor: 'text-purple-600', iconBg: 'bg-purple-50', headerBg: 'from-purple-50 to-violet-50',
-    category: 'Business Intelligence', badge: 'Dashboard', badgeColor: 'text-purple-700 bg-purple-100',
-    title: 'Executive Revenue Dashboard',
-    description: 'Multi-page Power BI dashboard tracking KPIs for a 500M+ revenue business, reducing report generation from 2 days to real-time.',
-    fullDesc: 'Designed and built a multi-page Power BI dashboard for the executive team of a 500M+ revenue company. Replaced a manual Excel reporting process that took 2 business days with a real-time solution pulling directly from Azure Synapse. The dashboard covers revenue breakdown by region, product, and channel, with drill-through capability and row-level security for each business unit.',
-    highlights: ['Report time cut from 2 days to real-time', 'Used by C-level and 15+ business units', 'Row-level security for data governance', 'Integrated with Azure Synapse and SQL Server'],
-    tech: ['Power BI', 'SQL', 'DAX', 'Azure Synapse'],
-    github: '#', docs: null, live: null, previewImg: null, images: [],
-  },
-  {
-    icon: Search, iconColor: 'text-green-600', iconBg: 'bg-green-50', headerBg: 'from-green-50 to-emerald-50',
-    category: 'Data Analysis', badge: 'ML / Analysis', badgeColor: 'text-green-700 bg-green-100',
-    title: 'Customer Churn Analysis',
-    description: 'Behavioral analysis of 50K+ customers to identify churn drivers; predictive model with 87% accuracy, reducing churn by 15%.',
-    fullDesc: 'Performed end-to-end churn analysis on a dataset of 50,000+ customers across 18 months of transaction history. Used feature engineering to extract behavioral signals like recency, frequency, and engagement drop-off patterns. Built and tuned a Random Forest classifier that achieved 87% accuracy. The model output was integrated into a CRM dashboard to flag at-risk customers for the retention team.',
-    highlights: ['87% model accuracy on test set', '15% reduction in monthly churn post-deployment', '50K+ customers analyzed', 'Integrated into CRM for retention team use'],
-    tech: ['Python', 'Scikit-learn', 'Pandas', 'Tableau'],
-    github: '#', docs: null, live: null, previewImg: null, images: [],
-  },
-  {
-    icon: Zap, iconColor: 'text-amber-600', iconBg: 'bg-amber-50', headerBg: 'from-amber-50 to-yellow-50',
-    category: 'Data Engineering', badge: 'Migration', badgeColor: 'text-amber-700 bg-amber-100',
-    title: 'Data Warehouse Migration',
-    description: 'Led migration of legacy SQL Server DWH to Snowflake, redesigning star schema models and reducing query costs by 60%.',
-    fullDesc: 'Led the full migration of a legacy on-premise SQL Server data warehouse to Snowflake on AWS. Redesigned the dimensional model from a flat denormalized structure to a proper star schema with Kimball methodology. Used Fivetran for source ingestion and dbt for transformation. The migration resulted in significantly faster query performance and a 60% reduction in infrastructure cost.',
-    highlights: ['60% reduction in query and storage costs', 'Full star schema redesign with dbt', '200+ tables migrated with zero data loss', 'Migration completed in 3 months'],
-    tech: ['Snowflake', 'dbt', 'SQL', 'Python', 'Fivetran'],
-    github: '#', docs: null, live: null, previewImg: null, images: [],
-  },
-  {
-    icon: Activity, iconColor: 'text-red-600', iconBg: 'bg-red-50', headerBg: 'from-red-50 to-rose-50',
-    category: 'Data Analysis', badge: 'Clustering', badgeColor: 'text-red-700 bg-red-100',
-    title: 'Market Segmentation Study',
-    description: 'K-Means clustering on transactional data to identify 6 distinct customer segments, informing targeted marketing campaigns.',
-    fullDesc: 'Applied unsupervised learning to segment a customer base using two years of transactional data. After preprocessing and RFM feature construction, K-Means clustering identified 6 meaningful segments ranging from high-value loyalists to one-time buyers. The segmentation was visualized in Seaborn and delivered as a business report with actionable recommendations for each segment.',
-    highlights: ['6 distinct segments identified from 80K+ records', 'Used by marketing team for targeted campaigns', '23% uplift in campaign CTR post-segmentation', 'Full analysis delivered as executive report'],
-    tech: ['Python', 'K-Means', 'Seaborn', 'Pandas'],
-    github: '#', docs: null, live: null, previewImg: null, images: [],
-  },
-  {
-    icon: GitBranch, iconColor: 'text-teal-600', iconBg: 'bg-teal-50', headerBg: 'from-teal-50 to-cyan-50',
-    category: 'Automation', badge: 'Automation', badgeColor: 'text-teal-700 bg-teal-100',
-    title: 'Automated Reporting System',
-    description: 'Python scheduler that auto-generates and distributes 20+ weekly reports via email, saving 8+ hours/week for the analytics team.',
-    fullDesc: 'Built a Python-based reporting automation system that generates and distributes over 20 weekly reports to different stakeholders across the business. Each report is dynamically generated from PostgreSQL queries, formatted into Excel and PDF, and sent via SMTP with personalized subject lines. Apache Airflow manages scheduling and retry logic. The system replaced a fully manual process.',
-    highlights: ['20+ reports automated end-to-end', '8+ hours saved per week for the analytics team', 'Supports Excel, PDF, and email delivery', 'Handles scheduling, retries, and failure alerts'],
-    tech: ['Python', 'Airflow', 'PostgreSQL', 'SMTP'],
-    github: '#', docs: null, live: null, previewImg: null, images: [],
   },
 ]
 
