@@ -3,7 +3,7 @@ import './globals.css'
 import BackToTop from '@/components/BackToTop'
 
 export const metadata: Metadata = {
-  title: 'Meelo — Data Analyst & Data Engineer',
+  title: 'Meelo.',
   description: 'Portfolio of Emelio Exaudi, a Data Analyst and Data Engineer based in Bogor, Jawa Barat.',
 }
 
