@@ -51,12 +51,13 @@ export default function About() {
             <FadeIn delay={0} direction="right">
               <div className="card rounded-2xl p-5 bg-gradient-to-br from-blue-600 to-blue-500 border-0 text-white">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur flex items-center justify-center flex-shrink-0">
-                    <User className="w-7 h-7 text-white" />
+                  <div className="w-14 h-14 rounded-full overflow-hidden bg-white/20 backdrop-blur flex-shrink-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/profile.jpg" alt="Emelio Exaudi" className="w-full h-full object-cover object-top" />
                   </div>
                   <div>
                     <div className="font-extrabold text-white text-lg">Emelio Exaudi</div>
-                    <div className="text-sm text-blue-100 font-medium">Data Analyst &amp; Data Engineer</div>
+                    <div className="text-sm text-blue-100 font-medium">Turning raw data into clear insights</div>
                     <div className="text-xs text-green-300 font-bold mt-1.5 flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block animate-pulse" />
                       Open to Work
