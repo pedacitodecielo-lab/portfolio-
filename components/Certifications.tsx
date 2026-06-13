@@ -1,3 +1,5 @@
+'use client'
+
 import { ExternalLink, Award } from 'lucide-react'
 import FadeIn from './FadeIn'
 
