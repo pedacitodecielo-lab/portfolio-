@@ -1,6 +1,7 @@
 'use client'
 
-import { ExternalLink, Award } from 'lucide-react'
+import { useState } from 'react'
+import { ExternalLink, Award, X, ChevronLeft, ChevronRight, Images } from 'lucide-react'
 import FadeIn from './FadeIn'
 
 type Cert = {
@@ -12,6 +13,7 @@ type Cert = {
   gradient: string
   initial: string
   image: string | null
+  images?: string[]
   links: { label: string; href: string }[]
 }
 
@@ -75,7 +77,8 @@ const certs: Cert[] = [
     categoryColor: 'bg-amber-100 text-amber-700',
     gradient: 'from-amber-400 to-orange-500',
     initial: 'BIG',
-    image: null,
+    image: '/certs/ieeebig-event.jpg',
+    images: ['/certs/ieeebig-event.jpg', '/certs/ieeebig-cert.jpg'],
     links: [],
   },
   {
@@ -91,7 +94,72 @@ const certs: Cert[] = [
   },
 ]
 
+function GalleryModal({ cert, onClose }: { cert: Cert; onClose: () => void }) {
+  const [idx, setIdx] = useState(0)
+  const imgs = cert.images ?? []
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white rounded-3xl w-full max-w-lg shadow-2xl animate-fade-scale"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="p-5 border-b border-slate-100 relative">
+          <button onClick={onClose}
+            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors">
+            <X className="w-4 h-4 text-slate-600" />
+          </button>
+          <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full w-fit mb-2 inline-block ${cert.categoryColor}`}>
+            {cert.category}
+          </span>
+          <h2 className="text-base font-extrabold text-slate-900 leading-snug pr-8">{cert.name}</h2>
+          <p className="text-xs text-slate-400 font-semibold mt-0.5">{cert.issuer} · {cert.date}</p>
+        </div>
+
+        <div className="p-5">
+          <div className="relative rounded-2xl overflow-hidden bg-slate-100 mb-3" style={{ aspectRatio: '4/3' }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={imgs[idx]} alt={`${cert.name} ${idx + 1}`} className="w-full h-full object-cover" />
+            {imgs.length > 1 && (
+              <>
+                <button onClick={() => setIdx((i) => (i - 1 + imgs.length) % imgs.length)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center transition-colors">
+                  <ChevronLeft className="w-4 h-4 text-white" />
+                </button>
+                <button onClick={() => setIdx((i) => (i + 1) % imgs.length)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center transition-colors">
+                  <ChevronRight className="w-4 h-4 text-white" />
+                </button>
+                <div className="absolute bottom-3 right-3 bg-black/50 text-white text-xs font-bold px-2 py-1 rounded-full">
+                  {idx + 1} / {imgs.length}
+                </div>
+              </>
+            )}
+          </div>
+
+          {imgs.length > 1 && (
+            <div className="flex gap-2">
+              {imgs.map((img, i) => (
+                <button key={i} onClick={() => setIdx(i)}
+                  className={`flex-1 h-16 rounded-xl overflow-hidden border-2 transition-all ${i === idx ? 'border-blue-500' : 'border-transparent opacity-50 hover:opacity-80'}`}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={img} alt={`thumb ${i}`} className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Certifications() {
+  const [galleryOpen, setGalleryOpen] = useState<Cert | null>(null)
+
   return (
     <section id="certifications" className="py-28 bg-slate-50">
       <div className="section-container">
@@ -125,7 +193,7 @@ export default function Certifications() {
                         const target = e.currentTarget
                         target.style.display = 'none'
                         if (target.parentElement) {
-                          target.parentElement.classList.add(`bg-gradient-to-br`, cert.gradient.split(' ')[0], cert.gradient.split(' ')[1])
+                          target.parentElement.classList.add('bg-gradient-to-br', cert.gradient.split(' ')[0], cert.gradient.split(' ')[1])
                         }
                       }}
                     />
@@ -149,27 +217,31 @@ export default function Certifications() {
 
                   <p className="text-xs text-slate-400 font-semibold mb-4">{cert.issuer} · {cert.date}</p>
 
-                  {/* Links */}
-                  {cert.links.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-auto">
-                      {cert.links.map((link) => (
-                        <a
-                          key={link.href}
-                          href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors"
-                        >
-                          <Award className="w-3.5 h-3.5" />
-                          {link.label}
-                          <ExternalLink className="w-3 h-3 opacity-70" />
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                  {cert.links.length === 0 && !cert.image && (
-                    <p className="text-[11px] text-slate-300 font-semibold mt-auto">Credential link coming soon</p>
-                  )}
+                  <div className="mt-auto flex flex-wrap items-center gap-2">
+                    {cert.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                      >
+                        <Award className="w-3.5 h-3.5" />
+                        {link.label}
+                        <ExternalLink className="w-3 h-3 opacity-70" />
+                      </a>
+                    ))}
+
+                    {cert.images && cert.images.length > 1 && (
+                      <button
+                        onClick={() => setGalleryOpen(cert)}
+                        className="flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors"
+                      >
+                        <Images className="w-3.5 h-3.5" />
+                        View documentation ({cert.images.length} photos)
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
             </FadeIn>
@@ -177,6 +249,8 @@ export default function Certifications() {
         </div>
 
       </div>
+
+      {galleryOpen && <GalleryModal cert={galleryOpen} onClose={() => setGalleryOpen(null)} />}
     </section>
   )
 }
