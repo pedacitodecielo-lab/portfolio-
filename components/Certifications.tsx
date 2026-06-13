@@ -68,6 +68,17 @@ const certs: Cert[] = [
     ],
   },
   {
+    name: 'National Finalist — BCC IEEE Big Innovation 2026',
+    issuer: 'IEEEBIG · Institut Teknologi Sepuluh Nopember',
+    date: 'May 2026',
+    category: 'Award',
+    categoryColor: 'bg-amber-100 text-amber-700',
+    gradient: 'from-amber-400 to-orange-500',
+    initial: 'BIG',
+    image: null,
+    links: [],
+  },
+  {
     name: 'CARE for SEA & CORDEX-SEA Workshop',
     issuer: 'WCRP · BMKG · APN',
     date: 'Aug 2025',
@@ -89,10 +100,10 @@ export default function Certifications() {
           <div className="text-center mb-14">
             <div className="text-xs font-extrabold text-blue-600 mb-3 uppercase tracking-[0.18em]">Credentials</div>
             <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900">
-              Certifications &amp; <span className="gradient-text">Courses</span>
+              Certifications &amp; <span className="gradient-text">Awards</span>
             </h2>
             <p className="text-slate-500 mt-4 max-w-xl mx-auto leading-relaxed text-[15px]">
-              Always learning. These are some of the programs and courses I have completed.
+              Credentials, courses, and recognitions I have earned along the way.
             </p>
           </div>
         </FadeIn>
