@@ -102,8 +102,8 @@ export default function Hero() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-slate-100">
               {[
                 { to: 20, suffix: '+', label: 'Projects' },
-                { to: 5, suffix: '+ TB', label: 'Data Processed' },
-                { to: 3, suffix: '+ yrs', label: 'Experience' },
+                { to: 5, suffix: '+', label: 'Certifications' },
+                { to: 1, suffix: '+', label: 'Internships' },
                 { to: 10, suffix: '+', label: 'Tools' },
               ].map((s) => (
                 <div key={s.label}>
