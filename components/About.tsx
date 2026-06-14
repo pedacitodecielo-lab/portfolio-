@@ -49,18 +49,23 @@ export default function About() {
           {/* Right */}
           <div className="space-y-4">
             <FadeIn delay={0} direction="right">
-              <div className="card rounded-2xl p-5 bg-gradient-to-br from-blue-600 to-blue-500 border-0 text-white">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full overflow-hidden bg-white/20 backdrop-blur flex-shrink-0">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/profile.jpg" alt="Emelio Exaudi" className="w-full h-full object-cover" style={{ objectPosition: '50% 18%' }} />
-                  </div>
-                  <div>
-                    <div className="font-extrabold text-white text-lg">Emelio Exaudi</div>
-                    <div className="text-xs text-green-300 font-bold mt-1 flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block animate-pulse" />
-                      Open to Work
-                    </div>
+              <div className="rounded-2xl overflow-hidden border border-blue-200 shadow-sm">
+                {/* Photo header */}
+                <div className="h-52 overflow-hidden bg-slate-100">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/profile.jpg"
+                    alt="Emelio Exaudi"
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: '50% 15%' }}
+                  />
+                </div>
+                {/* Name + status */}
+                <div className="bg-gradient-to-br from-blue-600 to-blue-500 px-5 py-4">
+                  <div className="font-extrabold text-white text-lg leading-tight">Emelio Exaudi</div>
+                  <div className="text-xs text-green-300 font-bold mt-1.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block animate-pulse" />
+                    Open to Work
                   </div>
                 </div>
               </div>
