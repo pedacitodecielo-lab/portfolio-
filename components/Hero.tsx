@@ -103,13 +103,19 @@ export default function Hero() {
               {[
                 { to: 20, suffix: '+', label: 'Projects' },
                 { to: 5, suffix: '+', label: 'Certifications' },
-                { to: 1, suffix: '+', label: 'Internships' },
+                { text: 'ANTAM\n& BMKG', label: 'Internships' },
                 { to: 10, suffix: '+', label: 'Tools' },
               ].map((s) => (
                 <div key={s.label}>
-                  <div className="text-2xl font-extrabold text-blue-600 mb-0.5">
-                    <AnimatedCounter to={s.to} suffix={s.suffix} />
-                  </div>
+                  {'text' in s ? (
+                    <div className="text-lg font-extrabold text-blue-600 mb-0.5 leading-snug whitespace-pre-line">
+                      {s.text}
+                    </div>
+                  ) : (
+                    <div className="text-2xl font-extrabold text-blue-600 mb-0.5">
+                      <AnimatedCounter to={s.to} suffix={s.suffix} />
+                    </div>
+                  )}
                   <div className="text-xs text-slate-400 font-semibold uppercase tracking-wide">{s.label}</div>
                 </div>
               ))}
