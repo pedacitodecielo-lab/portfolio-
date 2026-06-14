@@ -1,4 +1,4 @@
-import { MapPin, Mail, Github, Linkedin, User, Award, Clock, Target } from 'lucide-react'
+import { MapPin, Mail, Github, Linkedin, Award, Clock, Target } from 'lucide-react'
 import FadeIn from './FadeIn'
 
 const highlights = [
@@ -57,8 +57,7 @@ export default function About() {
                   </div>
                   <div>
                     <div className="font-extrabold text-white text-lg">Emelio Exaudi</div>
-                    <div className="text-sm text-blue-100 font-medium">Turning raw data into clear insights</div>
-                    <div className="text-xs text-green-300 font-bold mt-1.5 flex items-center gap-1.5">
+                    <div className="text-xs text-green-300 font-bold mt-1 flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block animate-pulse" />
                       Open to Work
                     </div>
