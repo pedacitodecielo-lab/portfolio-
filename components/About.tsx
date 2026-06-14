@@ -57,7 +57,7 @@ export default function About() {
                     src="/profile.jpg"
                     alt="Emelio Exaudi"
                     className="w-full h-full object-cover"
-                    style={{ objectPosition: '50% 15%' }}
+                    style={{ objectPosition: '50% 0%' }}
                   />
                 </div>
                 {/* Name + status */}
