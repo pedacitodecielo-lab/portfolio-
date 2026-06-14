@@ -53,7 +53,7 @@ export default function About() {
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-full overflow-hidden bg-white/20 backdrop-blur flex-shrink-0">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/profile.jpg" alt="Emelio Exaudi" className="w-full h-full object-cover object-top" />
+                    <img src="/profile.jpg" alt="Emelio Exaudi" className="w-full h-full object-cover" style={{ objectPosition: '50% 18%' }} />
                   </div>
                   <div>
                     <div className="font-extrabold text-white text-lg">Emelio Exaudi</div>
