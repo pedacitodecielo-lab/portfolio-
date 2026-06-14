@@ -18,7 +18,7 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    const res = await fetch('https://formspree.io/f/GANTI_INI', {
+    const res = await fetch('https://formspree.io/f/xpqeklee', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
